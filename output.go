@@ -2,6 +2,8 @@ package jsonToStruct
 
 //User model
 type User struct {
-	Hello string `json:"hello"`
-	World int    `json:"world"`
+	Age    float64                `json:"age"`
+	Name   string                 `json:"name"`
+	Social map[string]interface{} `json:"social"`
+	Type   string                 `json:"type"`
 }

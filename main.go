@@ -1,7 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"log"
 	"os"
 	"reflect"
 	"strings"
@@ -16,13 +19,21 @@ type Parser struct {
 
 func main() {
 
-	var data Parser
+	var (
+		data Parser
+		body map[string]interface{}
+	)
 
-	data.Name = "User"
-	data.Fields = map[string]interface{}{
-		"hello": "World",
-		"world": 1,
+	jsonFile, err := os.Open("input.json")
+	if err != nil {
+		log.Fatal(err)
 	}
+	defer jsonFile.Close()
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+
+	json.Unmarshal(byteValue, &body)
+	data.Name = "User"
+	data.Fields = body
 
 	tmpl, _ := template.New("template").Funcs(template.FuncMap{
 		"Title": strings.Title,
