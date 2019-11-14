@@ -14,6 +14,8 @@ import (
 	"github.com/iancoleman/strcase"
 )
 
+var counter int
+
 //Parser model
 type Parser struct {
 	Name   string
@@ -40,7 +42,7 @@ func main() {
 	file := "output.go"
 
 	strMap := make(map[int]string)
-	createStruct(data, 1, strMap)
+	createStruct(data, strMap)
 	// fmt.Println(strMap)
 
 	fp, err := os.Create(file)
@@ -60,7 +62,7 @@ func ifError(err error) {
 	}
 }
 
-func createStruct(data Parser, i int, strMap map[int]string) {
+func createStruct(data Parser, strMap map[int]string) {
 
 	tmpl, _ := template.New("template").Funcs(template.FuncMap{
 		"Title": getFieldName,
@@ -68,13 +70,19 @@ func createStruct(data Parser, i int, strMap map[int]string) {
 			if v == nil {
 				return "string"
 			}
+
 			rType := reflect.TypeOf(v)
-			if rType.Kind() == reflect.Map && rType.String() == "map[string]interface {}" {
-				subData := Parser{Name: strings.Title(k), Fields: v.(map[string]interface{})}
-				createStruct(subData, i+1, strMap)
-				return getFieldName(k)
+			if isStruct(rType) {
+				return getMapFieldName(k, v, strMap)
 			} else if rType.Kind() == reflect.Slice {
-				// fmt.Println(k, v)
+
+				rVal := reflect.ValueOf(v)
+				if rVal.Len() > 0 {
+					fVal := rVal.Index(0)
+					if isStruct(fVal.Elem().Type()) {
+						return "[]" + getMapFieldName(k, fVal.Interface(), strMap)
+					}
+				}
 			}
 			return strings.ToLower(reflect.TypeOf(v).String())
 		},
@@ -82,8 +90,24 @@ func createStruct(data Parser, i int, strMap map[int]string) {
 
 	var buf bytes.Buffer
 	tmpl.ExecuteTemplate(&buf, "template.tpl", data)
-	strMap[i] = buf.String()
+	strMap[counter] = buf.String()
+	counter++
 	return
+}
+
+//isStruct will check given ref value is struct type i.e. map[string]interface{}
+func isStruct(rType reflect.Type) (isStruct bool) {
+	if rType.Kind() == reflect.Map && rType.String() == "map[string]interface {}" {
+		isStruct = true
+	}
+	return
+}
+
+//getMapFieldName will return map field name after creating struct
+func getMapFieldName(k string, v interface{}, strMap map[int]string) string {
+	subData := Parser{Name: getFieldName(k), Fields: v.(map[string]interface{})}
+	createStruct(subData, strMap)
+	return getFieldName(k)
 }
 
 //getFieldName will return field name in Camel Case
