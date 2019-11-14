@@ -1,28 +1,142 @@
 package jsonToStruct
 
-//Batter model
-type Batter struct {
-	ID   string `json:"id"`
-	Type string `json:"type"`
+//ErrorArticle model
+type ErrorArticle struct {
 }
 
-//Batters model
-type Batters struct {
-	Batter []Batter `json:"batter"`
+//Error model
+type Error struct {
+	Article ErrorArticle `json:"article"`
+	Msg     string       `json:"msg"`
 }
 
-//Topping model
-type Topping struct {
-	ID   string `json:"id"`
-	Type string `json:"type"`
+//CustomDiscount model
+type CustomDiscount struct {
+	DiscountAmount float64 `json:"discount_amount"`
+	DiscountName   string  `json:"discount_name"`
+}
+
+//Retailer model
+type Retailer struct {
+	Name              string  `json:"name"`
+	RetailerCompanyID float64 `json:"retailer_company_id"`
+}
+
+//Tnc model
+type Tnc struct {
+	Disclaimer string `json:"disclaimer"`
+	Doc        string `json:"doc"`
+}
+
+//Config model
+type Config struct {
+	ItemWiseDiscount bool `json:"item_wise_discount"`
+}
+
+//Data model
+type Data struct {
+	Cart   Cart   `json:"cart"`
+	Config Config `json:"config"`
+	Error  Error  `json:"error"`
+}
+
+//Documents model
+type Documents struct {
+}
+
+//Charge model
+type Charge struct {
+	Rule  []interface{} `json:"rule"`
+	Total float64       `json:"total"`
+}
+
+//Info model
+type Info struct {
+	BillAddressID           float64   `json:"bill_address_id"`
+	Charge                  Charge    `json:"charge"`
+	Discount                Discount  `json:"discount"`
+	IsCustomDiscountApplied bool      `json:"is_custom_discount_applied"`
+	Price                   float64   `json:"price"`
+	Product                 []Product `json:"product"`
+	ShipAddressID           float64   `json:"ship_address_id"`
+	SubTotal                float64   `json:"sub_total"`
+	Tax                     float64   `json:"tax"`
+	Total                   float64   `json:"total"`
+	TotalQty                float64   `json:"total_qty"`
+	Voucher                 string    `json:"voucher"`
 }
 
 //User model
 type User struct {
-	Batters Batters   `json:"batters"`
-	ID      string    `json:"id"`
+	Data    Data   `json:"data"`
+	Message string `json:"message"`
+	Status  string `json:"status"`
+}
+
+//Overdue model
+type Overdue struct {
+	Message string `json:"message"`
+}
+
+//Cart model
+type Cart struct {
+	Documents   Documents `json:"documents"`
+	Edd         string    `json:"edd"`
+	Info        Info      `json:"info"`
+	Instruction string    `json:"instruction"`
+	Overdue     Overdue   `json:"overdue"`
+	Po          string    `json:"po"`
+	PoDate      string    `json:"po_date"`
+	Retailer    Retailer  `json:"retailer"`
+	Shipper     float64   `json:"shipper"`
+	Tnc         Tnc       `json:"tnc"`
+}
+
+//Rule model
+type Rule struct {
+	Amount float64 `json:"amount"`
+	Name   string  `json:"name"`
+}
+
+//Discount model
+type Discount struct {
+	Rule  []Rule  `json:"rule"`
+	Total float64 `json:"total"`
+}
+
+//Article model
+type Article struct {
+	Cp                    float64        `json:"cp"`
+	CpPerUnit             float64        `json:"cp_per_unit"`
+	CustomDiscount        CustomDiscount `json:"custom_discount"`
+	CustomDiscountApplied string         `json:"custom_discount_applied"`
+	Hsn                   string         `json:"hsn"`
+	ID                    float64        `json:"id"`
+	Image                 string         `json:"image"`
+	Lbt                   float64        `json:"lbt"`
+	LpPerUnit             float64        `json:"lp_per_unit"`
+	Moq                   float64        `json:"moq"`
+	MrpPerUnit            float64        `json:"mrp_per_unit"`
+	Mxoq                  float64        `json:"mxoq"`
+	Name                  string         `json:"name"`
+	PkgQty                float64        `json:"pkg_qty"`
+	PkgUnit               string         `json:"pkg_unit"`
+	Price                 float64        `json:"price"`
+	Qty                   float64        `json:"qty"`
+	Sku                   string         `json:"sku"`
+	SubTotal              float64        `json:"sub_total"`
+	Tax                   float64        `json:"tax"`
+	TaxableAmount         float64        `json:"taxable_amount"`
+	TaxablePercent        float64        `json:"taxable_percent"`
+	Total                 float64        `json:"total"`
+}
+
+//Product model
+type Product struct {
+	Article []Article `json:"article"`
+	Brand   string    `json:"brand"`
+	BrandID float64   `json:"brand_id"`
+	ID      float64   `json:"id"`
 	Name    string    `json:"name"`
-	Ppu     float64   `json:"ppu"`
-	Topping []Topping `json:"topping"`
-	Type    string    `json:"type"`
+	Tsin    string    `json:"tsin"`
 }

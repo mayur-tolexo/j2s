@@ -1,0 +1,132 @@
+{
+  "status": "success",
+  "message": "",
+  "data": {
+    "cart": {
+      "info": {
+        "price": 11200,
+        "total_qty": 23,
+        "discount": {
+          "rule": [
+            {
+              "name": "Wallet Discount",
+              "amount": 2800
+            }
+          ],
+          "total": 2800
+        },
+        "sub_total": 11200,
+        "charge": {
+          "rule": [],
+          "total": 0
+        },
+        "tax": 420,
+        "total": 8820,
+        "bill_address_id": 45859,
+        "ship_address_id": 45859,
+        "voucher": "",
+        "is_custom_discount_applied": false,
+        "product": [
+          {
+            "id": 10472,
+            "name": "Lenovo Mobile",
+            "tsin": "PRA-TC00003314",
+            "brand": "JK",
+            "brand_id": 118566,
+            "article": [
+              {
+                "id": 33949,
+                "sku": "PRA-T0000006229-1",
+                "name": "Lenovo Mobile 11",
+                "image": "https://img.pooraa.com/media//var/log/product/i/m/image_coming_soon_963.jpg",
+                "qty": 11,
+                "moq": 1,
+                "mxoq": 0,
+                "hsn": "",
+                "pkg_qty": 1,
+                "pkg_unit": "Bale",
+                "lbt": 0,
+                "lp_per_unit": 800,
+                "mrp_per_unit": 2000,
+                "cp_per_unit": 800,
+                "price": 800,
+                "cp": 800,
+                "sub_total": 8800,
+                "taxable_amount": 6600,
+                "taxable_percent": 5,
+                "tax": 330,
+                "total": 6930,
+                "custom_discount": {
+                  "discount_amount": 0,
+                  "discount_name": ""
+                },
+                "custom_discount_applied": "no"
+              }
+            ]
+          },
+          {
+            "id": 6139,
+            "name": "Niyati Die Sets",
+            "tsin": "PRA-TC00000350",
+            "brand": "Niyati India",
+            "brand_id": 12040,
+            "article": [
+              {
+                "id": 26540,
+                "sku": "PRA-T0000001015-1",
+                "name": "Niyati Die Sets-12mm",
+                "image": "https://img.pooraa.com/media//var/log/product/i/m/image_coming_soon_963.jpg",
+                "qty": 12,
+                "moq": 11,
+                "mxoq": 0,
+                "hsn": "",
+                "pkg_qty": 1,
+                "pkg_unit": "Pcs",
+                "lbt": 0,
+                "lp_per_unit": 200,
+                "mrp_per_unit": 500,
+                "cp_per_unit": 200,
+                "price": 200,
+                "cp": 200,
+                "sub_total": 2400,
+                "taxable_amount": 1800,
+                "taxable_percent": 5,
+                "tax": 90,
+                "total": 1890,
+                "custom_discount": {
+                  "discount_amount": 0,
+                  "discount_name": ""
+                },
+                "custom_discount_applied": "no"
+              }
+            ]
+          }
+        ]
+      },
+      "tnc": {
+        "disclaimer": "",
+        "doc": "36503-1568895077910.pdf"
+      },
+      "documents": {},
+      "overdue": {
+        "message": ""
+      },
+      "instruction": "",
+      "retailer": {
+        "retailer_company_id": 0,
+        "name": ""
+      },
+      "shipper": 0,
+      "edd": "",
+      "po": "",
+      "po_date": ""
+    },
+    "config": {
+      "item_wise_discount": true
+    },
+    "error": {
+      "article": {},
+      "msg": ""
+    }
+  }
+}

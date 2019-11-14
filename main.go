@@ -7,14 +7,13 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"os/exec"
 	"reflect"
 	"strings"
 	"text/template"
 
 	"github.com/iancoleman/strcase"
 )
-
-var counter int
 
 //Parser model
 type Parser struct {
@@ -29,7 +28,7 @@ func main() {
 		body map[string]interface{}
 	)
 
-	jsonFile, err := os.Open("input2.json")
+	jsonFile, err := os.Open("input3.json")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -41,7 +40,7 @@ func main() {
 	data.Fields = body
 	file := "output.go"
 
-	strMap := make(map[int]string)
+	strMap := make(map[string]string)
 	createStruct(data, strMap)
 	// fmt.Println(strMap)
 
@@ -53,6 +52,7 @@ func main() {
 			fp.WriteString("\n")
 		}
 	}
+	err = exec.Command("gofmt", "-w", file).Run()
 	ifError(err)
 }
 
@@ -62,7 +62,7 @@ func ifError(err error) {
 	}
 }
 
-func createStruct(data Parser, strMap map[int]string) {
+func createStruct(data Parser, strMap map[string]string) {
 
 	tmpl, _ := template.New("template").Funcs(template.FuncMap{
 		"Title": getFieldName,
@@ -73,14 +73,14 @@ func createStruct(data Parser, strMap map[int]string) {
 
 			rType := reflect.TypeOf(v)
 			if isStruct(rType) {
-				return getMapFieldName(k, v, strMap)
+				return getMapFieldName(data.Name, k, v, strMap)
 			} else if rType.Kind() == reflect.Slice {
 
 				rVal := reflect.ValueOf(v)
 				if rVal.Len() > 0 {
 					fVal := rVal.Index(0)
 					if isStruct(fVal.Elem().Type()) {
-						return "[]" + getMapFieldName(k, fVal.Interface(), strMap)
+						return "[]" + getMapFieldName(data.Name, k, fVal.Interface(), strMap)
 					}
 				}
 			}
@@ -90,8 +90,7 @@ func createStruct(data Parser, strMap map[int]string) {
 
 	var buf bytes.Buffer
 	tmpl.ExecuteTemplate(&buf, "template.tpl", data)
-	strMap[counter] = buf.String()
-	counter++
+	strMap[data.Name] = buf.String()
 	return
 }
 
@@ -104,10 +103,19 @@ func isStruct(rType reflect.Type) (isStruct bool) {
 }
 
 //getMapFieldName will return map field name after creating struct
-func getMapFieldName(k string, v interface{}, strMap map[int]string) string {
-	subData := Parser{Name: getFieldName(k), Fields: v.(map[string]interface{})}
+func getMapFieldName(pName string, k string, v interface{},
+	strMap map[string]string) string {
+	name := getFieldName(k)
+
+	if _, exists := strMap[name]; exists {
+		name = getFieldName(pName + name)
+	}
+	subData := Parser{
+		Name:   name,
+		Fields: v.(map[string]interface{}),
+	}
 	createStruct(subData, strMap)
-	return getFieldName(k)
+	return name
 }
 
 //getFieldName will return field name in Camel Case
@@ -115,6 +123,7 @@ func getFieldName(k string) (f string) {
 	f = strcase.ToCamel(k)
 	r := strings.NewReplacer(
 		"Id", "ID",
+		"id", "ID",
 	)
 	f = r.Replace(f)
 	return
