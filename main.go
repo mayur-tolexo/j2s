@@ -17,11 +17,13 @@ import (
 
 var (
 	strMap   map[string]string
+	hashMap  map[string]string
 	strOrder []string
 )
 
 func init() {
 	strMap = make(map[string]string)
+	hashMap = make(map[string]string)
 	strOrder = make([]string, 0)
 
 }
@@ -70,12 +72,18 @@ func ifError(err error) {
 }
 
 func createStruct(data Parser) {
-	strMap[data.Name] = getStructStr(data)
+	var hash string
+	fName := getFieldName(data.Name)
+	strMap[fName], hash = getStructStr(data)
+	hashMap[hash] = fName
 	strOrder = append(strOrder, data.Name)
 	return
 }
 
-func getStructStr(data Parser) string {
+func getStructStr(data Parser) (string, string) {
+
+	hash := ""
+	hFn := getHashFn(&hash)
 	tmpl, _ := template.New("template").Funcs(template.FuncMap{
 		"Title": getFieldName,
 		"TypeOf": func(p string, k string, v interface{}) string {
@@ -99,11 +107,19 @@ func getStructStr(data Parser) string {
 			}
 			return getType(rType)
 		},
+		"Hash": hFn,
 	}).ParseFiles("template.tpl")
 
 	var buf bytes.Buffer
 	tmpl.ExecuteTemplate(&buf, "template.tpl", data)
-	return buf.String()
+	return buf.String(), hash
+}
+
+func getHashFn(gHash *string) func(string, string) string {
+	return func(name string, hash string) string {
+		*gHash += hash
+		return ""
+	}
 }
 
 func getType(rType reflect.Type) string {
@@ -122,16 +138,23 @@ func isStruct(rType reflect.Type) (isStruct bool) {
 func getSubStructType(p string, k string, v interface{}) string {
 
 	name := getFieldName(k)
-	if v1, exists := strMap[name]; exists {
-		subData := getParserModel(name, v)
-		v2 := getStructStr(subData)
-		if v1 == v2 {
+	subData := getParserModel(name, v)
+	newStr, hash := getStructStr(subData)
+
+	//if any struct already exists with same hash
+	if name, exists := hashMap[hash]; exists {
+		return name
+	}
+
+	//if struct with same name already exists
+	if curStr, exists := strMap[name]; exists {
+		if curStr == newStr {
 			return name
 		}
 		name = getFieldName(p + k)
 	}
 
-	subData := getParserModel(name, v)
+	subData = getParserModel(name, v)
 	createStruct(subData)
 	return name
 }

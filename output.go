@@ -14,13 +14,7 @@ type Test1 struct {
 
 //Test1Social model
 type Test1Social struct {
-	Test2 Test2 `json:"test2"`
-}
-
-//Test2 model
-type Test2 struct {
-	Facebook string `json:"facebook"`
-	Twitter  string `json:"twitter"`
+	Test2 Social `json:"test2"`
 }
 
 //Social model
