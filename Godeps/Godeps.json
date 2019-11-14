@@ -1,0 +1,14 @@
+{
+	"ImportPath": "github.com/mayur-tolexo/jsonToStruct",
+	"GoVersion": "go1.9",
+	"GodepVersion": "v80",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/iancoleman/strcase",
+			"Rev": "3605ed457bf7f8caa1371b4fafadadc026673479"
+		}
+	]
+}
