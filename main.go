@@ -94,15 +94,20 @@ func getStructStr(data Parser) string {
 					if isStruct(fVal.Elem().Type()) {
 						return "[]" + getMapFieldName(data.Name, k, fVal.Interface())
 					}
+					return "[]" + getType(fVal.Elem().Type())
 				}
 			}
-			return strings.ToLower(reflect.TypeOf(v).String())
+			return getType(rType)
 		},
 	}).ParseFiles("template.tpl")
 
 	var buf bytes.Buffer
 	tmpl.ExecuteTemplate(&buf, "template.tpl", data)
 	return buf.String()
+}
+
+func getType(rType reflect.Type) string {
+	return strings.ToLower(rType.String())
 }
 
 //isStruct will check given ref value is struct type i.e. map[string]interface{}

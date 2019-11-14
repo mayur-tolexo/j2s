@@ -102,7 +102,7 @@ type ConfigAttr struct {
 
 //Media model
 type Media struct {
-	Images []interface{} `json:"images"`
+	Images []string      `json:"images"`
 	VIDeo  []interface{} `json:"video"`
 }
 
