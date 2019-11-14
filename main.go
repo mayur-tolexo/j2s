@@ -15,6 +15,16 @@ import (
 	"github.com/iancoleman/strcase"
 )
 
+var (
+	strMap   map[string]string
+	strOrder []string
+)
+
+func init() {
+	strMap = make(map[string]string)
+	strOrder = make([]string, 0)
+}
+
 //Parser model
 type Parser struct {
 	Name   string
@@ -40,16 +50,12 @@ func main() {
 	data.Fields = body
 	file := "output.go"
 
-	strMap := make(map[string]string)
-	createStruct(data, strMap)
-	// fmt.Println(strMap)
-
+	createStruct(data)
 	fp, err := os.Create(file)
 	if err == nil {
 		fp.WriteString("package jsonToStruct\n")
-		for _, v := range strMap {
-			fp.WriteString(v)
-			fp.WriteString("\n")
+		for i := len(strOrder) - 1; i >= 0; i-- {
+			fp.WriteString(strMap[strOrder[i]] + "\n")
 		}
 	}
 	err = exec.Command("gofmt", "-w", file).Run()
@@ -62,7 +68,7 @@ func ifError(err error) {
 	}
 }
 
-func createStruct(data Parser, strMap map[string]string) {
+func createStruct(data Parser) {
 
 	tmpl, _ := template.New("template").Funcs(template.FuncMap{
 		"Title": getFieldName,
@@ -73,14 +79,14 @@ func createStruct(data Parser, strMap map[string]string) {
 
 			rType := reflect.TypeOf(v)
 			if isStruct(rType) {
-				return getMapFieldName(data.Name, k, v, strMap)
+				return getMapFieldName(data.Name, k, v)
 			} else if rType.Kind() == reflect.Slice {
 
 				rVal := reflect.ValueOf(v)
 				if rVal.Len() > 0 {
 					fVal := rVal.Index(0)
 					if isStruct(fVal.Elem().Type()) {
-						return "[]" + getMapFieldName(data.Name, k, fVal.Interface(), strMap)
+						return "[]" + getMapFieldName(data.Name, k, fVal.Interface())
 					}
 				}
 			}
@@ -91,6 +97,7 @@ func createStruct(data Parser, strMap map[string]string) {
 	var buf bytes.Buffer
 	tmpl.ExecuteTemplate(&buf, "template.tpl", data)
 	strMap[data.Name] = buf.String()
+	strOrder = append(strOrder, data.Name)
 	return
 }
 
@@ -103,8 +110,7 @@ func isStruct(rType reflect.Type) (isStruct bool) {
 }
 
 //getMapFieldName will return map field name after creating struct
-func getMapFieldName(pName string, k string, v interface{},
-	strMap map[string]string) string {
+func getMapFieldName(pName string, k string, v interface{}) string {
 	name := getFieldName(k)
 
 	if _, exists := strMap[name]; exists {
@@ -114,7 +120,7 @@ func getMapFieldName(pName string, k string, v interface{},
 		Name:   name,
 		Fields: v.(map[string]interface{}),
 	}
-	createStruct(subData, strMap)
+	createStruct(subData)
 	return name
 }
 

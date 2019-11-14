@@ -1,36 +1,10 @@
 package jsonToStruct
 
-//ErrorArticle model
-type ErrorArticle struct {
-}
-
-//Error model
-type Error struct {
-	Article ErrorArticle `json:"article"`
-	Msg     string       `json:"msg"`
-}
-
-//CustomDiscount model
-type CustomDiscount struct {
-	DiscountAmount float64 `json:"discount_amount"`
-	DiscountName   string  `json:"discount_name"`
-}
-
-//Retailer model
-type Retailer struct {
-	Name              string  `json:"name"`
-	RetailerCompanyID float64 `json:"retailer_company_id"`
-}
-
-//Tnc model
-type Tnc struct {
-	Disclaimer string `json:"disclaimer"`
-	Doc        string `json:"doc"`
-}
-
-//Config model
-type Config struct {
-	ItemWiseDiscount bool `json:"item_wise_discount"`
+//User model
+type User struct {
+	Data    Data   `json:"data"`
+	Message string `json:"message"`
+	Status  string `json:"status"`
 }
 
 //Data model
@@ -40,14 +14,50 @@ type Data struct {
 	Error  Error  `json:"error"`
 }
 
-//Documents model
-type Documents struct {
+//Error model
+type Error struct {
+	Article ErrorArticle `json:"article"`
+	Msg     string       `json:"msg"`
 }
 
-//Charge model
-type Charge struct {
-	Rule  []interface{} `json:"rule"`
-	Total float64       `json:"total"`
+//ErrorArticle model
+type ErrorArticle struct {
+}
+
+//Config model
+type Config struct {
+	ItemWiseDiscount bool `json:"item_wise_discount"`
+}
+
+//Cart model
+type Cart struct {
+	Documents   Documents `json:"documents"`
+	Edd         string    `json:"edd"`
+	Info        Info      `json:"info"`
+	Instruction string    `json:"instruction"`
+	Overdue     Overdue   `json:"overdue"`
+	Po          string    `json:"po"`
+	PoDate      string    `json:"po_date"`
+	Retailer    Retailer  `json:"retailer"`
+	Shipper     float64   `json:"shipper"`
+	Tnc         Tnc       `json:"tnc"`
+}
+
+//Tnc model
+type Tnc struct {
+	Disclaimer string `json:"disclaimer"`
+	Doc        string `json:"doc"`
+}
+
+//Retailer model
+type Retailer struct {
+	Name              string  `json:"name"`
+	RetailerCompanyID float64 `json:"retailer_company_id"`
+}
+
+//Overdue model
+type Overdue struct {
+	Message string `json:"message"`
 }
 
 //Info model
@@ -66,42 +76,14 @@ type Info struct {
 	Voucher                 string    `json:"voucher"`
 }
 
-//User model
-type User struct {
-	Data    Data   `json:"data"`
-	Message string `json:"message"`
-	Status  string `json:"status"`
-}
-
-//Overdue model
-type Overdue struct {
-	Message string `json:"message"`
-}
-
-//Cart model
-type Cart struct {
-	Documents   Documents `json:"documents"`
-	Edd         string    `json:"edd"`
-	Info        Info      `json:"info"`
-	Instruction string    `json:"instruction"`
-	Overdue     Overdue   `json:"overdue"`
-	Po          string    `json:"po"`
-	PoDate      string    `json:"po_date"`
-	Retailer    Retailer  `json:"retailer"`
-	Shipper     float64   `json:"shipper"`
-	Tnc         Tnc       `json:"tnc"`
-}
-
-//Rule model
-type Rule struct {
-	Amount float64 `json:"amount"`
-	Name   string  `json:"name"`
-}
-
-//Discount model
-type Discount struct {
-	Rule  []Rule  `json:"rule"`
-	Total float64 `json:"total"`
+//Product model
+type Product struct {
+	Article []Article `json:"article"`
+	Brand   string    `json:"brand"`
+	BrandID float64   `json:"brand_id"`
+	ID      float64   `json:"id"`
+	Name    string    `json:"name"`
+	Tsin    string    `json:"tsin"`
 }
 
 //Article model
@@ -131,12 +113,30 @@ type Article struct {
 	Total                 float64        `json:"total"`
 }
 
-//Product model
-type Product struct {
-	Article []Article `json:"article"`
-	Brand   string    `json:"brand"`
-	BrandID float64   `json:"brand_id"`
-	ID      float64   `json:"id"`
-	Name    string    `json:"name"`
-	Tsin    string    `json:"tsin"`
+//CustomDiscount model
+type CustomDiscount struct {
+	DiscountAmount float64 `json:"discount_amount"`
+	DiscountName   string  `json:"discount_name"`
+}
+
+//Discount model
+type Discount struct {
+	Rule  []Rule  `json:"rule"`
+	Total float64 `json:"total"`
+}
+
+//Rule model
+type Rule struct {
+	Amount float64 `json:"amount"`
+	Name   string  `json:"name"`
+}
+
+//Charge model
+type Charge struct {
+	Rule  []interface{} `json:"rule"`
+	Total float64       `json:"total"`
+}
+
+//Documents model
+type Documents struct {
 }
