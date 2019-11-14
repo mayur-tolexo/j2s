@@ -1,7 +1,8 @@
 
-//{{.Name}} model
-type {{Title .Name }} struct {
+{{$structName:= .Name}}
+//{{$structName}} model
+type {{$structName}} struct {
 {{- range $jsonName, $val := .Fields}}
-	{{ Title $jsonName }}	{{ (TypeOf $jsonName $val) }}	`json:"{{ $jsonName}}"`
+	{{ Title $jsonName }} {{ (TypeOf $structName $jsonName $val) }} `json:"{{ $jsonName}}"`
 {{- end}}
 }

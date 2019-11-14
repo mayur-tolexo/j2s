@@ -39,7 +39,7 @@ func main() {
 		body map[string]interface{}
 	)
 
-	jsonFile, err := os.Open("input3.json")
+	jsonFile, err := os.Open("input.json")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -78,21 +78,21 @@ func createStruct(data Parser) {
 func getStructStr(data Parser) string {
 	tmpl, _ := template.New("template").Funcs(template.FuncMap{
 		"Title": getFieldName,
-		"TypeOf": func(k string, v interface{}) string {
+		"TypeOf": func(p string, k string, v interface{}) string {
 			if v == nil {
 				return "string"
 			}
 
 			rType := reflect.TypeOf(v)
 			if isStruct(rType) {
-				return getMapFieldName(data.Name, k, v)
+				return getSubStructType(p, k, v)
 			} else if rType.Kind() == reflect.Slice {
 
 				rVal := reflect.ValueOf(v)
 				if rVal.Len() > 0 {
 					fVal := rVal.Index(0)
 					if isStruct(fVal.Elem().Type()) {
-						return "[]" + getMapFieldName(data.Name, k, fVal.Interface())
+						return "[]" + getSubStructType(p, k, fVal.Interface())
 					}
 					return "[]" + getType(fVal.Elem().Type())
 				}
@@ -118,8 +118,8 @@ func isStruct(rType reflect.Type) (isStruct bool) {
 	return
 }
 
-//getMapFieldName will return map field name after creating struct
-func getMapFieldName(pName string, k string, v interface{}) string {
+//getSubStructType will return map field name after creating struct
+func getSubStructType(p string, k string, v interface{}) string {
 
 	name := getFieldName(k)
 	if v1, exists := strMap[name]; exists {
@@ -128,6 +128,7 @@ func getMapFieldName(pName string, k string, v interface{}) string {
 		if v1 == v2 {
 			return name
 		}
+		name = getFieldName(p + k)
 	}
 
 	subData := getParserModel(name, v)
