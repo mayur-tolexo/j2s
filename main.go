@@ -41,7 +41,7 @@ func main() {
 		body map[string]interface{}
 	)
 
-	jsonFile, err := os.Open("input.json")
+	jsonFile, err := os.Open("input3.json")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -102,10 +102,10 @@ func getStructStr(data Parser) (string, string) {
 					if isStruct(fVal.Elem().Type()) {
 						return "[]" + getSubStructType(p, k, fVal.Interface())
 					}
-					return "[]" + getType(fVal.Elem().Type())
+					return "[]" + getType(v, fVal.Elem().Type())
 				}
 			}
-			return getType(rType)
+			return getType(v, rType)
 		},
 		"Hash": hFn,
 	}).ParseFiles("template.tpl")
@@ -122,8 +122,18 @@ func getHashFn(gHash *string) func(string, string) string {
 	}
 }
 
-func getType(rType reflect.Type) string {
+func getType(v interface{}, rType reflect.Type) string {
+	if rType.Kind() == reflect.Float64 {
+		if isIntegral(v.(float64)) {
+			return "int"
+		}
+	}
 	return strings.ToLower(rType.String())
+}
+
+//isIntegral will check float is int
+func isIntegral(val float64) bool {
+	return val == float64(int(val))
 }
 
 //isStruct will check given ref value is struct type i.e. map[string]interface{}
