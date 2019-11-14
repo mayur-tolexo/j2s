@@ -23,6 +23,7 @@ var (
 func init() {
 	strMap = make(map[string]string)
 	strOrder = make([]string, 0)
+
 }
 
 //Parser model
@@ -69,7 +70,12 @@ func ifError(err error) {
 }
 
 func createStruct(data Parser) {
+	strMap[data.Name] = getStructStr(data)
+	strOrder = append(strOrder, data.Name)
+	return
+}
 
+func getStructStr(data Parser) string {
 	tmpl, _ := template.New("template").Funcs(template.FuncMap{
 		"Title": getFieldName,
 		"TypeOf": func(k string, v interface{}) string {
@@ -96,9 +102,7 @@ func createStruct(data Parser) {
 
 	var buf bytes.Buffer
 	tmpl.ExecuteTemplate(&buf, "template.tpl", data)
-	strMap[data.Name] = buf.String()
-	strOrder = append(strOrder, data.Name)
-	return
+	return buf.String()
 }
 
 //isStruct will check given ref value is struct type i.e. map[string]interface{}
@@ -111,17 +115,26 @@ func isStruct(rType reflect.Type) (isStruct bool) {
 
 //getMapFieldName will return map field name after creating struct
 func getMapFieldName(pName string, k string, v interface{}) string {
-	name := getFieldName(k)
 
-	if _, exists := strMap[name]; exists {
-		name = getFieldName(pName + name)
+	name := getFieldName(k)
+	if v1, exists := strMap[name]; exists {
+		subData := getParserModel(name, v)
+		v2 := getStructStr(subData)
+		if v1 == v2 {
+			return name
+		}
 	}
-	subData := Parser{
+
+	subData := getParserModel(name, v)
+	createStruct(subData)
+	return name
+}
+
+func getParserModel(name string, v interface{}) Parser {
+	return Parser{
 		Name:   name,
 		Fields: v.(map[string]interface{}),
 	}
-	createStruct(subData)
-	return name
 }
 
 //getFieldName will return field name in Camel Case
@@ -130,6 +143,8 @@ func getFieldName(k string) (f string) {
 	r := strings.NewReplacer(
 		"Id", "ID",
 		"id", "ID",
+		"Api", "API",
+		"Http", "HTTP",
 	)
 	f = r.Replace(f)
 	return

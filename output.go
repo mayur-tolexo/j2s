@@ -2,141 +2,112 @@ package jsonToStruct
 
 //User model
 type User struct {
+	Data     Data     `json:"data"`
+	Debug    Debug    `json:"debug"`
+	Message  string   `json:"message"`
+	MetaData MetaData `json:"metaData"`
+	Status   string   `json:"status"`
+}
+
+//MetaData model
+type MetaData struct {
+	UserType string `json:"user_type"`
+}
+
+//Debug model
+type Debug struct {
+	Dcall     Dcall     `json:"dcall"`
+	Dmessage  string    `json:"dmessage"`
+	Dresponse Dresponse `json:"dresponse"`
+}
+
+//Dresponse model
+type Dresponse struct {
 	Data    Data   `json:"data"`
 	Message string `json:"message"`
-	Status  string `json:"status"`
+	Status  bool   `json:"status"`
+}
+
+//Dcall model
+type Dcall struct {
+	APIBody    string  `json:"apiBody"`
+	APITimeout float64 `json:"api_timeout"`
+	Headers    Headers `json:"headers"`
+	Hostname   string  `json:"hostname"`
+	Method     string  `json:"method"`
+	Path       string  `json:"path"`
+	Port       string  `json:"port"`
+}
+
+//Headers model
+type Headers struct {
+	CONSUMER            string  `json:"CONSUMER"`
+	ContentLength       float64 `json:"Content-Length"`
+	ContentType         string  `json:"Content-Type"`
+	DEBUGTACHYON        bool    `json:"DEBUG_TACHYON"`
+	LOGINCOMPANYID      float64 `json:"LOGIN_COMPANY_ID"`
+	LOGINCOMPANYTYPE    string  `json:"LOGIN_COMPANY_TYPE"`
+	LOGINUID            float64 `json:"LOGIN_UID"`
+	SELECTEDCUSTOMERCID float64 `json:"SELECTED_CUSTOMER_CID"`
+	SELECTEDSELLERCID   float64 `json:"SELECTED_SELLER_CID"`
 }
 
 //Data model
 type Data struct {
-	Cart   Cart   `json:"cart"`
-	Config Config `json:"config"`
-	Error  Error  `json:"error"`
+	AllowBackorder         bool          `json:"allow_backorder"`
+	BrandName              string        `json:"brand_name"`
+	Config                 []Config      `json:"config"`
+	DisplayPackableQty     bool          `json:"display_packable_qty"`
+	DisplayStock           bool          `json:"display_stock"`
+	Media                  Media         `json:"media"`
+	Moq                    string        `json:"moq"`
+	Name                   string        `json:"name"`
+	ShowDealerPriceWithTax bool          `json:"show_dealer_price_with_tax"`
+	Sku                    []Sku         `json:"sku"`
+	Spec                   []interface{} `json:"spec"`
+	Tsin                   string        `json:"tsin"`
 }
 
-//Error model
-type Error struct {
-	Article ErrorArticle `json:"article"`
-	Msg     string       `json:"msg"`
+//Sku model
+type Sku struct {
+	ID                 float64       `json:"_id"`
+	ConfigAttr         ConfigAttr    `json:"config_attr"`
+	DealerPrice        float64       `json:"dealer_price"`
+	DealerPriceInclTax float64       `json:"dealer_price_incl_tax"`
+	Discount           float64       `json:"discount"`
+	Do                 float64       `json:"do"`
+	InStock            bool          `json:"in_stock"`
+	Lbt                float64       `json:"lbt"`
+	Moq                float64       `json:"moq"`
+	MrpPerUnit         float64       `json:"mrp_per_unit"`
+	Msrp               float64       `json:"msrp"`
+	MysqlArticleID     float64       `json:"mysql_article_id"`
+	Name               string        `json:"name"`
+	NumberOfItems      string        `json:"number_of_items"`
+	PackPrice          float64       `json:"pack_price"`
+	PendingQty         float64       `json:"pending_qty"`
+	PkgUnit            string        `json:"pkg_unit"`
+	Sku                string        `json:"sku"`
+	SpPerUnit          float64       `json:"sp_per_unit"`
+	Stock              float64       `json:"stock"`
+	TierRule           []interface{} `json:"tier_rule"`
 }
 
-//ErrorArticle model
-type ErrorArticle struct {
+//ConfigAttr model
+type ConfigAttr struct {
+	Color string `json:"color"`
+	Size  string `json:"size"`
+	Sole  string `json:"sole"`
+}
+
+//Media model
+type Media struct {
+	Images []interface{} `json:"images"`
+	VIDeo  []interface{} `json:"video"`
 }
 
 //Config model
 type Config struct {
-	ItemWiseDiscount bool `json:"item_wise_discount"`
-}
-
-//Cart model
-type Cart struct {
-	Documents   Documents `json:"documents"`
-	Edd         string    `json:"edd"`
-	Info        Info      `json:"info"`
-	Instruction string    `json:"instruction"`
-	Overdue     Overdue   `json:"overdue"`
-	Po          string    `json:"po"`
-	PoDate      string    `json:"po_date"`
-	Retailer    Retailer  `json:"retailer"`
-	Shipper     float64   `json:"shipper"`
-	Tnc         Tnc       `json:"tnc"`
-}
-
-//Tnc model
-type Tnc struct {
-	Disclaimer string `json:"disclaimer"`
-	Doc        string `json:"doc"`
-}
-
-//Retailer model
-type Retailer struct {
-	Name              string  `json:"name"`
-	RetailerCompanyID float64 `json:"retailer_company_id"`
-}
-
-//Overdue model
-type Overdue struct {
-	Message string `json:"message"`
-}
-
-//Info model
-type Info struct {
-	BillAddressID           float64   `json:"bill_address_id"`
-	Charge                  Charge    `json:"charge"`
-	Discount                Discount  `json:"discount"`
-	IsCustomDiscountApplied bool      `json:"is_custom_discount_applied"`
-	Price                   float64   `json:"price"`
-	Product                 []Product `json:"product"`
-	ShipAddressID           float64   `json:"ship_address_id"`
-	SubTotal                float64   `json:"sub_total"`
-	Tax                     float64   `json:"tax"`
-	Total                   float64   `json:"total"`
-	TotalQty                float64   `json:"total_qty"`
-	Voucher                 string    `json:"voucher"`
-}
-
-//Product model
-type Product struct {
-	Article []Article `json:"article"`
-	Brand   string    `json:"brand"`
-	BrandID float64   `json:"brand_id"`
-	ID      float64   `json:"id"`
-	Name    string    `json:"name"`
-	Tsin    string    `json:"tsin"`
-}
-
-//Article model
-type Article struct {
-	Cp                    float64        `json:"cp"`
-	CpPerUnit             float64        `json:"cp_per_unit"`
-	CustomDiscount        CustomDiscount `json:"custom_discount"`
-	CustomDiscountApplied string         `json:"custom_discount_applied"`
-	Hsn                   string         `json:"hsn"`
-	ID                    float64        `json:"id"`
-	Image                 string         `json:"image"`
-	Lbt                   float64        `json:"lbt"`
-	LpPerUnit             float64        `json:"lp_per_unit"`
-	Moq                   float64        `json:"moq"`
-	MrpPerUnit            float64        `json:"mrp_per_unit"`
-	Mxoq                  float64        `json:"mxoq"`
-	Name                  string         `json:"name"`
-	PkgQty                float64        `json:"pkg_qty"`
-	PkgUnit               string         `json:"pkg_unit"`
-	Price                 float64        `json:"price"`
-	Qty                   float64        `json:"qty"`
-	Sku                   string         `json:"sku"`
-	SubTotal              float64        `json:"sub_total"`
-	Tax                   float64        `json:"tax"`
-	TaxableAmount         float64        `json:"taxable_amount"`
-	TaxablePercent        float64        `json:"taxable_percent"`
-	Total                 float64        `json:"total"`
-}
-
-//CustomDiscount model
-type CustomDiscount struct {
-	DiscountAmount float64 `json:"discount_amount"`
-	DiscountName   string  `json:"discount_name"`
-}
-
-//Discount model
-type Discount struct {
-	Rule  []Rule  `json:"rule"`
-	Total float64 `json:"total"`
-}
-
-//Rule model
-type Rule struct {
-	Amount float64 `json:"amount"`
-	Name   string  `json:"name"`
-}
-
-//Charge model
-type Charge struct {
-	Rule  []interface{} `json:"rule"`
-	Total float64       `json:"total"`
-}
-
-//Documents model
-type Documents struct {
+	Code  string `json:"code"`
+	Label string `json:"label"`
 }

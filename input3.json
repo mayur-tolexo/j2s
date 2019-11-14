@@ -2,131 +2,800 @@
   "status": "success",
   "message": "",
   "data": {
-    "cart": {
-      "info": {
-        "price": 11200,
-        "total_qty": 23,
-        "discount": {
-          "rule": [
-            {
-              "name": "Wallet Discount",
-              "amount": 2800
-            }
+    "name": "Niyati Military / PT Shoes - 34",
+    "moq": "1",
+    "media": {
+      "images": [
+        "https://img.pooraa.com/media//var/log/product/28/image/1559581090973.jpg"
+      ],
+      "video": []
+    },
+    "config": [
+      {
+        "code": "sole",
+        "label": "Sole"
+      },
+      {
+        "code": "color",
+        "label": "Color"
+      },
+      {
+        "code": "size",
+        "label": "Size"
+      }
+    ],
+    "spec": [],
+    "sku": [
+      {
+        "_id": 135,
+        "name": "Niyati / PT Shoes - 34, Tan - 66",
+        "sku": "NIYATI0003-36503",
+        "number_of_items": "10",
+        "pkg_unit": "Pcs",
+        "moq": 1,
+        "stock": 886,
+        "pending_qty": 19,
+        "sp_per_unit": 450,
+        "mrp_per_unit": 551,
+        "msrp": 5510,
+        "dealer_price": 450,
+        "pack_price": 4500,
+        "dealer_price_incl_tax": 472.5,
+        "discount": 0,
+        "config_attr": {
+          "color": "Tan",
+          "size": "6",
+          "sole": "Double Density PVC"
+        },
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6858261,
+        "in_stock": true,
+        "tier_rule": []
+      },
+      {
+        "_id": 138,
+        "name": "Niyati / PT Shoes - 34, Tan - 7",
+        "sku": "NIYATI0004-36503",
+        "number_of_items": "10",
+        "pkg_unit": "Pcs",
+        "moq": 1,
+        "stock": 727,
+        "pending_qty": 12,
+        "sp_per_unit": 400,
+        "mrp_per_unit": 500,
+        "msrp": 5000,
+        "dealer_price": 410,
+        "pack_price": 4100,
+        "dealer_price_incl_tax": 430.5,
+        "discount": -2.5,
+        "config_attr": {
+          "color": "Tan",
+          "size": "7",
+          "sole": "Double Density PVC"
+        },
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6858262,
+        "in_stock": true,
+        "tier_rule": []
+      },
+      {
+        "_id": 142,
+        "name": "Niyati / PT Shoes - 34, Tan - 8",
+        "sku": "NIYATI0005-36503",
+        "number_of_items": "10",
+        "pkg_unit": "Pcs",
+        "moq": 1,
+        "stock": 900,
+        "pending_qty": 0,
+        "sp_per_unit": 400,
+        "mrp_per_unit": 500,
+        "msrp": 5000,
+        "dealer_price": 400,
+        "pack_price": 4000,
+        "dealer_price_incl_tax": 420,
+        "discount": 0,
+        "config_attr": {
+          "color": "Tan",
+          "size": "8",
+          "sole": "Double Density PVC"
+        },
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6858263,
+        "in_stock": true,
+        "tier_rule": []
+      },
+      {
+        "_id": 148,
+        "name": "Niyati / PT Shoes - 34, Tan - 9",
+        "sku": "NIYATI0006-36503",
+        "number_of_items": "10",
+        "pkg_unit": "Pcs",
+        "moq": 1,
+        "stock": 996,
+        "pending_qty": 4,
+        "sp_per_unit": 400,
+        "mrp_per_unit": 500,
+        "msrp": 5000,
+        "dealer_price": 400,
+        "pack_price": 4000,
+        "dealer_price_incl_tax": 420,
+        "discount": 0,
+        "config_attr": {
+          "color": "Tan",
+          "size": "9",
+          "sole": "Double Density PVC"
+        },
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6858264,
+        "in_stock": true,
+        "tier_rule": []
+      },
+      {
+        "_id": 153,
+        "name": "Niyati / PT Shoes - 34, Tan - 10",
+        "sku": "NIYATI0007-36503",
+        "number_of_items": "10",
+        "pkg_unit": "Pcs",
+        "moq": 1,
+        "stock": 151.5,
+        "pending_qty": 0,
+        "sp_per_unit": 400,
+        "mrp_per_unit": 500,
+        "msrp": 5000,
+        "dealer_price": 400,
+        "pack_price": 4000,
+        "dealer_price_incl_tax": 420,
+        "discount": 0,
+        "config_attr": {
+          "color": "Tan",
+          "size": "10",
+          "sole": "Double Density PVC"
+        },
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6858265,
+        "in_stock": true,
+        "tier_rule": []
+      },
+      {
+        "_id": 156,
+        "name": "Niyati / PT Shoes - 34, Tan - 11",
+        "sku": "NIYATI0008-36503",
+        "number_of_items": "10",
+        "pkg_unit": "Pcs",
+        "moq": 1,
+        "stock": 900,
+        "pending_qty": 0,
+        "sp_per_unit": 400,
+        "mrp_per_unit": 500,
+        "msrp": 5000,
+        "dealer_price": 400,
+        "pack_price": 4000,
+        "dealer_price_incl_tax": 420,
+        "discount": 0,
+        "config_attr": {
+          "color": "Tan",
+          "size": "11",
+          "sole": "Double Density PVC"
+        },
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6858266,
+        "in_stock": true,
+        "tier_rule": []
+      },
+      {
+        "_id": 160,
+        "name": "Niyati / PT Shoes - #034, White, 5",
+        "sku": "NIYATI0009-36503",
+        "number_of_items": "20",
+        "pkg_unit": "Pcs",
+        "moq": 2,
+        "stock": 900,
+        "pending_qty": 0,
+        "sp_per_unit": 400,
+        "mrp_per_unit": 500,
+        "msrp": 10000,
+        "dealer_price": 400,
+        "pack_price": 8000,
+        "dealer_price_incl_tax": 420,
+        "discount": 0,
+        "config_attr": {
+          "color": "White",
+          "size": "5",
+          "sole": "Double Density PVC"
+        },
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6858267,
+        "in_stock": true,
+        "tier_rule": []
+      },
+      {
+        "_id": 166,
+        "name": "Niyati / PT Shoes - #034, White, 6",
+        "sku": "NIYATI0010-36503",
+        "number_of_items": "20",
+        "pkg_unit": "Pcs",
+        "moq": 2,
+        "stock": 900,
+        "pending_qty": 0,
+        "sp_per_unit": 400,
+        "mrp_per_unit": 500,
+        "msrp": 10000,
+        "dealer_price": 400,
+        "pack_price": 8000,
+        "dealer_price_incl_tax": 420,
+        "discount": 0,
+        "config_attr": {
+          "color": "White",
+          "size": "6",
+          "sole": "Double Density PVC"
+        },
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6858268,
+        "in_stock": true,
+        "tier_rule": []
+      },
+      {
+        "_id": 170,
+        "name": "Niyati / PT Shoes - #034, White, 7",
+        "sku": "NIYATI0011-36503",
+        "number_of_items": "20",
+        "pkg_unit": "Pcs",
+        "moq": 2,
+        "stock": 900,
+        "pending_qty": 0,
+        "sp_per_unit": 400,
+        "mrp_per_unit": 500,
+        "msrp": 10000,
+        "dealer_price": 400,
+        "pack_price": 8000,
+        "dealer_price_incl_tax": 420,
+        "discount": 0,
+        "config_attr": {
+          "color": "White",
+          "size": "7",
+          "sole": "Double Density PVC"
+        },
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6858269,
+        "in_stock": true,
+        "tier_rule": []
+      },
+      {
+        "_id": 173,
+        "name": "Niyati / PT Shoes - #034, White, 8",
+        "sku": "NIYATI0012-36503",
+        "number_of_items": "20",
+        "pkg_unit": "Pcs",
+        "moq": 2,
+        "stock": 890,
+        "pending_qty": 0,
+        "sp_per_unit": 400,
+        "mrp_per_unit": 500,
+        "msrp": 10000,
+        "dealer_price": 400,
+        "pack_price": 8000,
+        "dealer_price_incl_tax": 420,
+        "discount": 0,
+        "config_attr": {
+          "color": "White",
+          "size": "8",
+          "sole": "Double Density PVC"
+        },
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6858270,
+        "in_stock": true,
+        "tier_rule": []
+      },
+      {
+        "_id": 178,
+        "name": "Niyati / PT Shoes - #034, White, 9",
+        "sku": "NIYATI0013-36503",
+        "number_of_items": "20",
+        "pkg_unit": "Pcs",
+        "moq": 2,
+        "stock": 900,
+        "pending_qty": 0,
+        "sp_per_unit": 400,
+        "mrp_per_unit": 500,
+        "msrp": 10000,
+        "dealer_price": 400,
+        "pack_price": 8000,
+        "dealer_price_incl_tax": 420,
+        "discount": 0,
+        "config_attr": {
+          "color": "White",
+          "size": "9",
+          "sole": "Double Density PVC"
+        },
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6858271,
+        "in_stock": true,
+        "tier_rule": []
+      },
+      {
+        "_id": 181,
+        "name": "Niyati / PT Shoes - #034, White, 10",
+        "sku": "NIYATI0014-36503",
+        "number_of_items": "20",
+        "pkg_unit": "Pcs",
+        "moq": 2,
+        "stock": 1000,
+        "pending_qty": 0,
+        "sp_per_unit": 400,
+        "mrp_per_unit": 500,
+        "msrp": 10000,
+        "dealer_price": 400,
+        "pack_price": 8000,
+        "dealer_price_incl_tax": 420,
+        "discount": 0,
+        "config_attr": {
+          "color": "White",
+          "size": "10",
+          "sole": "Double Density PVC"
+        },
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6858272,
+        "in_stock": true,
+        "tier_rule": []
+      },
+      {
+        "_id": 185,
+        "name": "Niyati / PT Shoes - #034, White, 11",
+        "sku": "NIYATI0015-36503",
+        "number_of_items": "20",
+        "pkg_unit": "Pcs",
+        "moq": 2,
+        "stock": 900,
+        "pending_qty": 0,
+        "sp_per_unit": 400,
+        "mrp_per_unit": 500,
+        "msrp": 10000,
+        "dealer_price": 400,
+        "pack_price": 8000,
+        "dealer_price_incl_tax": 420,
+        "discount": 0,
+        "config_attr": {
+          "color": "White",
+          "size": "11",
+          "sole": "Double Density PVC"
+        },
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6858273,
+        "in_stock": true,
+        "tier_rule": []
+      }
+    ],
+    "allow_backorder": true,
+    "display_packable_qty": true,
+    "display_stock": true,
+    "brand_name": "Niyati India",
+    "tsin": "TNIYATI0001",
+    "show_dealer_price_with_tax": false
+  },
+  "metaData": {
+    "user_type": "seller"
+  },
+  "debug": {
+    "dcall": {
+      "hostname": "staging2.pooraa.net",
+      "port": "7071",
+      "api_timeout": 500000,
+      "method": "POST",
+      "apiBody": "{\"seller_cid\":1}",
+      "headers": {
+        "LOGIN_UID": 8,
+        "LOGIN_COMPANY_ID": 1,
+        "LOGIN_COMPANY_TYPE": "seller",
+        "CONSUMER": "mera",
+        "SELECTED_SELLER_CID": 1,
+        "SELECTED_CUSTOMER_CID": 1,
+        "DEBUG_TACHYON": true,
+        "Content-Type": "application/json",
+        "Content-Length": 16
+      },
+      "path": "/catalog/v1/product/1/prod/28/"
+    },
+    "dresponse": {
+      "data": {
+        "name": "Niyati Military / PT Shoes - 34",
+        "moq": "1",
+        "media": {
+          "images": [
+            "https://img.pooraa.com/media//var/log/product/28/image/1559581090973.jpg"
           ],
-          "total": 2800
+          "video": []
         },
-        "sub_total": 11200,
-        "charge": {
-          "rule": [],
-          "total": 0
-        },
-        "tax": 420,
-        "total": 8820,
-        "bill_address_id": 45859,
-        "ship_address_id": 45859,
-        "voucher": "",
-        "is_custom_discount_applied": false,
-        "product": [
+        "config": [
           {
-            "id": 10472,
-            "name": "Lenovo Mobile",
-            "tsin": "PRA-TC00003314",
-            "brand": "JK",
-            "brand_id": 118566,
-            "article": [
-              {
-                "id": 33949,
-                "sku": "PRA-T0000006229-1",
-                "name": "Lenovo Mobile 11",
-                "image": "https://img.pooraa.com/media//var/log/product/i/m/image_coming_soon_963.jpg",
-                "qty": 11,
-                "moq": 1,
-                "mxoq": 0,
-                "hsn": "",
-                "pkg_qty": 1,
-                "pkg_unit": "Bale",
-                "lbt": 0,
-                "lp_per_unit": 800,
-                "mrp_per_unit": 2000,
-                "cp_per_unit": 800,
-                "price": 800,
-                "cp": 800,
-                "sub_total": 8800,
-                "taxable_amount": 6600,
-                "taxable_percent": 5,
-                "tax": 330,
-                "total": 6930,
-                "custom_discount": {
-                  "discount_amount": 0,
-                  "discount_name": ""
-                },
-                "custom_discount_applied": "no"
-              }
-            ]
+            "code": "sole",
+            "label": "Sole"
           },
           {
-            "id": 6139,
-            "name": "Niyati Die Sets",
-            "tsin": "PRA-TC00000350",
-            "brand": "Niyati India",
-            "brand_id": 12040,
-            "article": [
-              {
-                "id": 26540,
-                "sku": "PRA-T0000001015-1",
-                "name": "Niyati Die Sets-12mm",
-                "image": "https://img.pooraa.com/media//var/log/product/i/m/image_coming_soon_963.jpg",
-                "qty": 12,
-                "moq": 11,
-                "mxoq": 0,
-                "hsn": "",
-                "pkg_qty": 1,
-                "pkg_unit": "Pcs",
-                "lbt": 0,
-                "lp_per_unit": 200,
-                "mrp_per_unit": 500,
-                "cp_per_unit": 200,
-                "price": 200,
-                "cp": 200,
-                "sub_total": 2400,
-                "taxable_amount": 1800,
-                "taxable_percent": 5,
-                "tax": 90,
-                "total": 1890,
-                "custom_discount": {
-                  "discount_amount": 0,
-                  "discount_name": ""
-                },
-                "custom_discount_applied": "no"
-              }
-            ]
+            "code": "color",
+            "label": "Color"
+          },
+          {
+            "code": "size",
+            "label": "Size"
           }
-        ]
+        ],
+        "spec": [],
+        "sku": [
+          {
+            "_id": 135,
+            "name": "Niyati / PT Shoes - 34, Tan - 66",
+            "sku": "NIYATI0003-36503",
+            "number_of_items": "10",
+            "pkg_unit": "Pcs",
+            "moq": 1,
+            "stock": 886,
+            "pending_qty": 19,
+            "sp_per_unit": 450,
+            "mrp_per_unit": 551,
+            "msrp": 5510,
+            "dealer_price": 450,
+            "pack_price": 4500,
+            "dealer_price_incl_tax": 472.5,
+            "discount": 0,
+            "config_attr": {
+              "color": "Tan",
+              "size": "6",
+              "sole": "Double Density PVC"
+            },
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6858261,
+            "in_stock": true,
+            "tier_rule": []
+          },
+          {
+            "_id": 138,
+            "name": "Niyati / PT Shoes - 34, Tan - 7",
+            "sku": "NIYATI0004-36503",
+            "number_of_items": "10",
+            "pkg_unit": "Pcs",
+            "moq": 1,
+            "stock": 727,
+            "pending_qty": 12,
+            "sp_per_unit": 400,
+            "mrp_per_unit": 500,
+            "msrp": 5000,
+            "dealer_price": 410,
+            "pack_price": 4100,
+            "dealer_price_incl_tax": 430.5,
+            "discount": -2.5,
+            "config_attr": {
+              "color": "Tan",
+              "size": "7",
+              "sole": "Double Density PVC"
+            },
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6858262,
+            "in_stock": true,
+            "tier_rule": []
+          },
+          {
+            "_id": 142,
+            "name": "Niyati / PT Shoes - 34, Tan - 8",
+            "sku": "NIYATI0005-36503",
+            "number_of_items": "10",
+            "pkg_unit": "Pcs",
+            "moq": 1,
+            "stock": 900,
+            "pending_qty": 0,
+            "sp_per_unit": 400,
+            "mrp_per_unit": 500,
+            "msrp": 5000,
+            "dealer_price": 400,
+            "pack_price": 4000,
+            "dealer_price_incl_tax": 420,
+            "discount": 0,
+            "config_attr": {
+              "color": "Tan",
+              "size": "8",
+              "sole": "Double Density PVC"
+            },
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6858263,
+            "in_stock": true,
+            "tier_rule": []
+          },
+          {
+            "_id": 148,
+            "name": "Niyati / PT Shoes - 34, Tan - 9",
+            "sku": "NIYATI0006-36503",
+            "number_of_items": "10",
+            "pkg_unit": "Pcs",
+            "moq": 1,
+            "stock": 996,
+            "pending_qty": 4,
+            "sp_per_unit": 400,
+            "mrp_per_unit": 500,
+            "msrp": 5000,
+            "dealer_price": 400,
+            "pack_price": 4000,
+            "dealer_price_incl_tax": 420,
+            "discount": 0,
+            "config_attr": {
+              "color": "Tan",
+              "size": "9",
+              "sole": "Double Density PVC"
+            },
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6858264,
+            "in_stock": true,
+            "tier_rule": []
+          },
+          {
+            "_id": 153,
+            "name": "Niyati / PT Shoes - 34, Tan - 10",
+            "sku": "NIYATI0007-36503",
+            "number_of_items": "10",
+            "pkg_unit": "Pcs",
+            "moq": 1,
+            "stock": 151.5,
+            "pending_qty": 0,
+            "sp_per_unit": 400,
+            "mrp_per_unit": 500,
+            "msrp": 5000,
+            "dealer_price": 400,
+            "pack_price": 4000,
+            "dealer_price_incl_tax": 420,
+            "discount": 0,
+            "config_attr": {
+              "color": "Tan",
+              "size": "10",
+              "sole": "Double Density PVC"
+            },
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6858265,
+            "in_stock": true,
+            "tier_rule": []
+          },
+          {
+            "_id": 156,
+            "name": "Niyati / PT Shoes - 34, Tan - 11",
+            "sku": "NIYATI0008-36503",
+            "number_of_items": "10",
+            "pkg_unit": "Pcs",
+            "moq": 1,
+            "stock": 900,
+            "pending_qty": 0,
+            "sp_per_unit": 400,
+            "mrp_per_unit": 500,
+            "msrp": 5000,
+            "dealer_price": 400,
+            "pack_price": 4000,
+            "dealer_price_incl_tax": 420,
+            "discount": 0,
+            "config_attr": {
+              "color": "Tan",
+              "size": "11",
+              "sole": "Double Density PVC"
+            },
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6858266,
+            "in_stock": true,
+            "tier_rule": []
+          },
+          {
+            "_id": 160,
+            "name": "Niyati / PT Shoes - #034, White, 5",
+            "sku": "NIYATI0009-36503",
+            "number_of_items": "20",
+            "pkg_unit": "Pcs",
+            "moq": 2,
+            "stock": 900,
+            "pending_qty": 0,
+            "sp_per_unit": 400,
+            "mrp_per_unit": 500,
+            "msrp": 10000,
+            "dealer_price": 400,
+            "pack_price": 8000,
+            "dealer_price_incl_tax": 420,
+            "discount": 0,
+            "config_attr": {
+              "color": "White",
+              "size": "5",
+              "sole": "Double Density PVC"
+            },
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6858267,
+            "in_stock": true,
+            "tier_rule": []
+          },
+          {
+            "_id": 166,
+            "name": "Niyati / PT Shoes - #034, White, 6",
+            "sku": "NIYATI0010-36503",
+            "number_of_items": "20",
+            "pkg_unit": "Pcs",
+            "moq": 2,
+            "stock": 900,
+            "pending_qty": 0,
+            "sp_per_unit": 400,
+            "mrp_per_unit": 500,
+            "msrp": 10000,
+            "dealer_price": 400,
+            "pack_price": 8000,
+            "dealer_price_incl_tax": 420,
+            "discount": 0,
+            "config_attr": {
+              "color": "White",
+              "size": "6",
+              "sole": "Double Density PVC"
+            },
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6858268,
+            "in_stock": true,
+            "tier_rule": []
+          },
+          {
+            "_id": 170,
+            "name": "Niyati / PT Shoes - #034, White, 7",
+            "sku": "NIYATI0011-36503",
+            "number_of_items": "20",
+            "pkg_unit": "Pcs",
+            "moq": 2,
+            "stock": 900,
+            "pending_qty": 0,
+            "sp_per_unit": 400,
+            "mrp_per_unit": 500,
+            "msrp": 10000,
+            "dealer_price": 400,
+            "pack_price": 8000,
+            "dealer_price_incl_tax": 420,
+            "discount": 0,
+            "config_attr": {
+              "color": "White",
+              "size": "7",
+              "sole": "Double Density PVC"
+            },
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6858269,
+            "in_stock": true,
+            "tier_rule": []
+          },
+          {
+            "_id": 173,
+            "name": "Niyati / PT Shoes - #034, White, 8",
+            "sku": "NIYATI0012-36503",
+            "number_of_items": "20",
+            "pkg_unit": "Pcs",
+            "moq": 2,
+            "stock": 890,
+            "pending_qty": 0,
+            "sp_per_unit": 400,
+            "mrp_per_unit": 500,
+            "msrp": 10000,
+            "dealer_price": 400,
+            "pack_price": 8000,
+            "dealer_price_incl_tax": 420,
+            "discount": 0,
+            "config_attr": {
+              "color": "White",
+              "size": "8",
+              "sole": "Double Density PVC"
+            },
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6858270,
+            "in_stock": true,
+            "tier_rule": []
+          },
+          {
+            "_id": 178,
+            "name": "Niyati / PT Shoes - #034, White, 9",
+            "sku": "NIYATI0013-36503",
+            "number_of_items": "20",
+            "pkg_unit": "Pcs",
+            "moq": 2,
+            "stock": 900,
+            "pending_qty": 0,
+            "sp_per_unit": 400,
+            "mrp_per_unit": 500,
+            "msrp": 10000,
+            "dealer_price": 400,
+            "pack_price": 8000,
+            "dealer_price_incl_tax": 420,
+            "discount": 0,
+            "config_attr": {
+              "color": "White",
+              "size": "9",
+              "sole": "Double Density PVC"
+            },
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6858271,
+            "in_stock": true,
+            "tier_rule": []
+          },
+          {
+            "_id": 181,
+            "name": "Niyati / PT Shoes - #034, White, 10",
+            "sku": "NIYATI0014-36503",
+            "number_of_items": "20",
+            "pkg_unit": "Pcs",
+            "moq": 2,
+            "stock": 1000,
+            "pending_qty": 0,
+            "sp_per_unit": 400,
+            "mrp_per_unit": 500,
+            "msrp": 10000,
+            "dealer_price": 400,
+            "pack_price": 8000,
+            "dealer_price_incl_tax": 420,
+            "discount": 0,
+            "config_attr": {
+              "color": "White",
+              "size": "10",
+              "sole": "Double Density PVC"
+            },
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6858272,
+            "in_stock": true,
+            "tier_rule": []
+          },
+          {
+            "_id": 185,
+            "name": "Niyati / PT Shoes - #034, White, 11",
+            "sku": "NIYATI0015-36503",
+            "number_of_items": "20",
+            "pkg_unit": "Pcs",
+            "moq": 2,
+            "stock": 900,
+            "pending_qty": 0,
+            "sp_per_unit": 400,
+            "mrp_per_unit": 500,
+            "msrp": 10000,
+            "dealer_price": 400,
+            "pack_price": 8000,
+            "dealer_price_incl_tax": 420,
+            "discount": 0,
+            "config_attr": {
+              "color": "White",
+              "size": "11",
+              "sole": "Double Density PVC"
+            },
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6858273,
+            "in_stock": true,
+            "tier_rule": []
+          }
+        ],
+        "allow_backorder": true,
+        "display_packable_qty": true,
+        "display_stock": true,
+        "brand_name": "Niyati India",
+        "tsin": "TNIYATI0001",
+        "show_dealer_price_with_tax": false
       },
-      "tnc": {
-        "disclaimer": "",
-        "doc": "36503-1568895077910.pdf"
-      },
-      "documents": {},
-      "overdue": {
-        "message": ""
-      },
-      "instruction": "",
-      "retailer": {
-        "retailer_company_id": 0,
-        "name": ""
-      },
-      "shipper": 0,
-      "edd": "",
-      "po": "",
-      "po_date": ""
+      "message": "",
+      "status": true
     },
-    "config": {
-      "item_wise_discount": true
-    },
-    "error": {
-      "article": {},
-      "msg": ""
-    }
+    "dmessage": ""
   }
 }
