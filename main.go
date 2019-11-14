@@ -10,6 +10,8 @@ import (
 	"reflect"
 	"strings"
 	"text/template"
+
+	"github.com/iancoleman/strcase"
 )
 
 //Parser model
@@ -61,7 +63,7 @@ func ifError(err error) {
 func createStruct(data Parser, i int, strMap map[int]string) {
 
 	tmpl, _ := template.New("template").Funcs(template.FuncMap{
-		"Title": strings.Title,
+		"Title": getFieldName,
 		"TypeOf": func(k string, v interface{}) string {
 			if v == nil {
 				return "string"
@@ -70,7 +72,7 @@ func createStruct(data Parser, i int, strMap map[int]string) {
 			if rType.Kind() == reflect.Map && rType.String() == "map[string]interface {}" {
 				subData := Parser{Name: strings.Title(k), Fields: v.(map[string]interface{})}
 				createStruct(subData, i+1, strMap)
-				return strings.Title(k)
+				return getFieldName(k)
 			} else if rType.Kind() == reflect.Slice {
 				// fmt.Println(k, v)
 			}
@@ -81,5 +83,15 @@ func createStruct(data Parser, i int, strMap map[int]string) {
 	var buf bytes.Buffer
 	tmpl.ExecuteTemplate(&buf, "template.tpl", data)
 	strMap[i] = buf.String()
+	return
+}
+
+//getFieldName will return field name in Camel Case
+func getFieldName(k string) (f string) {
+	f = strcase.ToCamel(k)
+	r := strings.NewReplacer(
+		"Id", "ID",
+	)
+	f = r.Replace(f)
 	return
 }
