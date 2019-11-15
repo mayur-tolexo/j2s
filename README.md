@@ -10,7 +10,7 @@ go get github.com/mayur-tolexo/j2s
   - -name=Bakery [Structure Name (default "User")]
   - -raw=0 [1 to enable console json input]
 
-#### Create Struct from consone json.
+#### Create Struct from console json.
 | Command        | Output           |
 | ------------- |:-------------:|
 |![Screenshot 2019-11-16 at 12 31 41 AM](https://user-images.githubusercontent.com/20511920/68968935-bf928580-0809-11ea-8249-f3f91503ea4d.png)| ![Screenshot 2019-11-16 at 12 32 14 AM](https://user-images.githubusercontent.com/20511920/68968979-d9cc6380-0809-11ea-89ef-35942637395f.png) |
