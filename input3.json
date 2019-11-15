@@ -1,1 +1,299 @@
-{"status":"success","message":"","data":{"name":"Brijesh Miscellaneous","moq":"1","media":{"images":["https://img.pooraa.com/media//var/log/product//15443/image/1555322800092.png","https://img.pooraa.com/media//var/log/product/95/image/1571823082501.png"],"video":[]},"config":[{"code":"color","label":"Color"}],"spec":[],"sku":[{"_id":285,"name":"Brijesh Miscellaneous, Color Aqua/Black","sku":"PRA-T0000000022-1","number_of_items":"12","pkg_unit":"Pair","moq":1,"stock":0,"pending_qty":0,"sp_per_unit":125,"mrp_per_unit":299,"msrp":3588,"dealer_price":125,"pack_price":1500,"dealer_price_incl_tax":140,"discount":0,"config_attr":{"color":"AQUA / BLACK"},"lbt":0,"do":0,"mysql_article_id":6906164,"in_stock":false,"tier_rule":[{"min":0,"max":1000,"cp":120,"discount_percentage":4,"pack_price":1440,"tax_amt":0}]},{"_id":15867,"name":"Brijesh Miscellaneous 5","sku":"PRA-T0000000609-1","number_of_items":"1","pkg_unit":"Bag","moq":1,"stock":0,"pending_qty":0,"sp_per_unit":600,"mrp_per_unit":1000,"msrp":1000,"dealer_price":600,"pack_price":600,"dealer_price_incl_tax":684,"discount":0,"config_attr":{"color":"All"},"lbt":0,"do":0,"mysql_article_id":6913404,"in_stock":false,"tier_rule":[]},{"_id":15866,"name":"Brijesh Miscellaneous 4","sku":"PRA-T0000000608-1","number_of_items":"1","pkg_unit":"Bag","moq":1,"stock":0,"pending_qty":0,"sp_per_unit":600,"mrp_per_unit":1000,"msrp":1000,"dealer_price":600,"pack_price":600,"dealer_price_incl_tax":684,"discount":0,"config_attr":{"color":"BEG/NAVY"},"lbt":0,"do":0,"mysql_article_id":6913403,"in_stock":false,"tier_rule":[]},{"_id":289,"name":"Brijesh Miscellaneousq2","sku":"PRA-T0000000024-1","number_of_items":"12","pkg_unit":"Pair","moq":1,"stock":0,"pending_qty":0,"sp_per_unit":125,"mrp_per_unit":299,"msrp":3588,"dealer_price":125,"pack_price":1500,"dealer_price_incl_tax":140,"discount":0,"config_attr":{},"lbt":0,"do":0,"mysql_article_id":6906166,"in_stock":false,"tier_rule":[]}],"allow_backorder":false,"display_packable_qty":true,"display_stock":true,"brand_name":"gg","tsin":"PRA-TC00000032","show_dealer_price_with_tax":false},"metaData":{"user_type":"seller"},"debug":{"dcall":{"hostname":"qa2.pooraa.net","port":"7071","api_timeout":500000,"method":"POST","apiBody":"{\"seller_cid\":1}","headers":{"LOGIN_UID":18926,"LOGIN_COMPANY_ID":1,"LOGIN_COMPANY_TYPE":"seller","CONSUMER":"mera","SELECTED_SELLER_CID":1,"SELECTED_CUSTOMER_CID":21606,"DEBUG_TACHYON":true,"Content-Type":"application/json","Content-Length":16},"path":"/catalog/v1/product/21606/prod/95/"},"dresponse":{"data":{"name":"Brijesh Miscellaneous","moq":"1","media":{"images":["https://img.pooraa.com/media//var/log/product//15443/image/1555322800092.png","https://img.pooraa.com/media//var/log/product/95/image/1571823082501.png"],"video":[]},"config":[{"code":"color","label":"Color"}],"spec":[],"sku":[{"_id":285,"name":"Brijesh Miscellaneous, Color Aqua/Black","sku":"PRA-T0000000022-1","number_of_items":"12","pkg_unit":"Pair","moq":1,"stock":0,"pending_qty":0,"sp_per_unit":125,"mrp_per_unit":299,"msrp":3588,"dealer_price":125,"pack_price":1500,"dealer_price_incl_tax":140,"discount":0,"config_attr":{"color":"AQUA / BLACK"},"lbt":0,"do":0,"mysql_article_id":6906164,"in_stock":false,"tier_rule":[{"min":0,"max":1000,"cp":120,"discount_percentage":4,"pack_price":1440,"tax_amt":0}]},{"_id":15867,"name":"Brijesh Miscellaneous 5","sku":"PRA-T0000000609-1","number_of_items":"1","pkg_unit":"Bag","moq":1,"stock":0,"pending_qty":0,"sp_per_unit":600,"mrp_per_unit":1000,"msrp":1000,"dealer_price":600,"pack_price":600,"dealer_price_incl_tax":684,"discount":0,"config_attr":{"color":"All"},"lbt":0,"do":0,"mysql_article_id":6913404,"in_stock":false,"tier_rule":[]},{"_id":15866,"name":"Brijesh Miscellaneous 4","sku":"PRA-T0000000608-1","number_of_items":"1","pkg_unit":"Bag","moq":1,"stock":0,"pending_qty":0,"sp_per_unit":600,"mrp_per_unit":1000,"msrp":1000,"dealer_price":600,"pack_price":600,"dealer_price_incl_tax":684,"discount":0,"config_attr":{"color":"BEG/NAVY"},"lbt":0,"do":0,"mysql_article_id":6913403,"in_stock":false,"tier_rule":[]},{"_id":289,"name":"Brijesh Miscellaneousq2","sku":"PRA-T0000000024-1","number_of_items":"12","pkg_unit":"Pair","moq":1,"stock":0,"pending_qty":0,"sp_per_unit":125,"mrp_per_unit":299,"msrp":3588,"dealer_price":125,"pack_price":1500,"dealer_price_incl_tax":140,"discount":0,"config_attr":{},"lbt":0,"do":0,"mysql_article_id":6906166,"in_stock":false,"tier_rule":[]}],"allow_backorder":false,"display_packable_qty":true,"display_stock":true,"brand_name":"gg","tsin":"PRA-TC00000032","show_dealer_price_with_tax":false},"message":"","status":true},"dmessage":""}}
+{
+  "status": "success",
+  "message": "",
+  "data": {
+    "name": "Brijesh Miscellaneous",
+    "moq": "1",
+    "media": {
+      "images": [
+        "https://img.pooraa.com/media//var/log/product//15443/image/1555322800092.png",
+        "https://img.pooraa.com/media//var/log/product/95/image/1571823082501.png"
+      ],
+      "video": []
+    },
+    "config": [
+      {
+        "code": "color",
+        "label": "Color"
+      }
+    ],
+    "spec": [],
+    "sku": [
+      {
+        "_id": 285,
+        "name": "Brijesh Miscellaneous, Color Aqua/Black",
+        "sku": "PRA-T0000000022-1",
+        "number_of_items": "12",
+        "pkg_unit": "Pair",
+        "moq": 1,
+        "stock": 0,
+        "pending_qty": 0,
+        "sp_per_unit": 125,
+        "mrp_per_unit": 299,
+        "msrp": 3588,
+        "dealer_price": 125,
+        "pack_price": 1500,
+        "dealer_price_incl_tax": 140,
+        "discount": 0,
+        "config_attr": {
+          "color": "AQUA / BLACK"
+        },
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6906164,
+        "in_stock": false,
+        "tier_rule": [
+          {
+            "min": 0,
+            "max": 1000,
+            "cp": 120,
+            "discount_percentage": 4,
+            "pack_price": 1440,
+            "tax_amt": 0
+          }
+        ]
+      },
+      {
+        "_id": 15867,
+        "name": "Brijesh Miscellaneous 5",
+        "sku": "PRA-T0000000609-1",
+        "number_of_items": "1",
+        "pkg_unit": "Bag",
+        "moq": 1,
+        "stock": 0,
+        "pending_qty": 0,
+        "sp_per_unit": 600,
+        "mrp_per_unit": 1000,
+        "msrp": 1000,
+        "dealer_price": 600,
+        "pack_price": 600,
+        "dealer_price_incl_tax": 684,
+        "discount": 0,
+        "config_attr": {
+          "color": "All"
+        },
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6913404,
+        "in_stock": false,
+        "tier_rule": []
+      },
+      {
+        "_id": 15866,
+        "name": "Brijesh Miscellaneous 4",
+        "sku": "PRA-T0000000608-1",
+        "number_of_items": "1",
+        "pkg_unit": "Bag",
+        "moq": 1,
+        "stock": 0,
+        "pending_qty": 0,
+        "sp_per_unit": 600,
+        "mrp_per_unit": 1000,
+        "msrp": 1000,
+        "dealer_price": 600,
+        "pack_price": 600,
+        "dealer_price_incl_tax": 684,
+        "discount": 0,
+        "config_attr": {
+          "color": "BEG/NAVY"
+        },
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6913403,
+        "in_stock": false,
+        "tier_rule": []
+      },
+      {
+        "_id": 289,
+        "name": "Brijesh Miscellaneousq2",
+        "sku": "PRA-T0000000024-1",
+        "number_of_items": "12",
+        "pkg_unit": "Pair",
+        "moq": 1,
+        "stock": 0,
+        "pending_qty": 0,
+        "sp_per_unit": 125,
+        "mrp_per_unit": 299,
+        "msrp": 3588,
+        "dealer_price": 125,
+        "pack_price": 1500,
+        "dealer_price_incl_tax": 140,
+        "discount": 0,
+        "config_attr": {},
+        "lbt": 0,
+        "do": 0,
+        "mysql_article_id": 6906166,
+        "in_stock": false,
+        "tier_rule": []
+      }
+    ],
+    "allow_backorder": false,
+    "display_packable_qty": true,
+    "display_stock": true,
+    "brand_name": "gg",
+    "tsin": "PRA-TC00000032",
+    "show_dealer_price_with_tax": false
+  },
+  "metaData": {
+    "user_type": "seller"
+  },
+  "debug": {
+    "dcall": {
+      "hostname": "qa2.pooraa.net",
+      "port": "7071",
+      "api_timeout": 500000,
+      "method": "POST",
+      "apiBody": "{\"seller_cid\":1}",
+      "headers": {
+        "LOGIN_UID": 18926,
+        "LOGIN_COMPANY_ID": 1,
+        "LOGIN_COMPANY_TYPE": "seller",
+        "CONSUMER": "mera",
+        "SELECTED_SELLER_CID": 1,
+        "SELECTED_CUSTOMER_CID": 21606,
+        "DEBUG_TACHYON": true,
+        "Content-Type": "application/json",
+        "Content-Length": 16
+      },
+      "path": "/catalog/v1/product/21606/prod/95/"
+    },
+    "dresponse": {
+      "data": {
+        "name": "Brijesh Miscellaneous",
+        "moq": "1",
+        "media": {
+          "images": [
+            "https://img.pooraa.com/media//var/log/product//15443/image/1555322800092.png",
+            "https://img.pooraa.com/media//var/log/product/95/image/1571823082501.png"
+          ],
+          "video": []
+        },
+        "config": [
+          {
+            "code": "color",
+            "label": "Color"
+          }
+        ],
+        "spec": [],
+        "sku": [
+          {
+            "_id": 285,
+            "name": "Brijesh Miscellaneous, Color Aqua/Black",
+            "sku": "PRA-T0000000022-1",
+            "number_of_items": "12",
+            "pkg_unit": "Pair",
+            "moq": 1,
+            "stock": 0,
+            "pending_qty": 0,
+            "sp_per_unit": 125,
+            "mrp_per_unit": 299,
+            "msrp": 3588,
+            "dealer_price": 125,
+            "pack_price": 1500,
+            "dealer_price_incl_tax": 140,
+            "discount": 0,
+            "config_attr": {
+              "color": "AQUA / BLACK"
+            },
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6906164,
+            "in_stock": false,
+            "tier_rule": [
+              {
+                "min": 0,
+                "max": 1000,
+                "cp": 120,
+                "discount_percentage": 4,
+                "pack_price": 1440,
+                "tax_amt": 0
+              }
+            ]
+          },
+          {
+            "_id": 15867,
+            "name": "Brijesh Miscellaneous 5",
+            "sku": "PRA-T0000000609-1",
+            "number_of_items": "1",
+            "pkg_unit": "Bag",
+            "moq": 1,
+            "stock": 0,
+            "pending_qty": 0,
+            "sp_per_unit": 600,
+            "mrp_per_unit": 1000,
+            "msrp": 1000,
+            "dealer_price": 600,
+            "pack_price": 600,
+            "dealer_price_incl_tax": 684,
+            "discount": 0,
+            "config_attr": {
+              "color": "All"
+            },
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6913404,
+            "in_stock": false,
+            "tier_rule": []
+          },
+          {
+            "_id": 15866,
+            "name": "Brijesh Miscellaneous 4",
+            "sku": "PRA-T0000000608-1",
+            "number_of_items": "1",
+            "pkg_unit": "Bag",
+            "moq": 1,
+            "stock": 0,
+            "pending_qty": 0,
+            "sp_per_unit": 600,
+            "mrp_per_unit": 1000,
+            "msrp": 1000,
+            "dealer_price": 600,
+            "pack_price": 600,
+            "dealer_price_incl_tax": 684,
+            "discount": 0,
+            "config_attr": {
+              "color": "BEG/NAVY"
+            },
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6913403,
+            "in_stock": false,
+            "tier_rule": []
+          },
+          {
+            "_id": 289,
+            "name": "Brijesh Miscellaneousq2",
+            "sku": "PRA-T0000000024-1",
+            "number_of_items": "12",
+            "pkg_unit": "Pair",
+            "moq": 1,
+            "stock": 0,
+            "pending_qty": 0,
+            "sp_per_unit": 125,
+            "mrp_per_unit": 299,
+            "msrp": 3588,
+            "dealer_price": 125,
+            "pack_price": 1500,
+            "dealer_price_incl_tax": 140,
+            "discount": 0,
+            "config_attr": {},
+            "lbt": 0,
+            "do": 0,
+            "mysql_article_id": 6906166,
+            "in_stock": false,
+            "tier_rule": []
+          }
+        ],
+        "allow_backorder": false,
+        "display_packable_qty": true,
+        "display_stock": true,
+        "brand_name": "gg",
+        "tsin": "PRA-TC00000032",
+        "show_dealer_price_with_tax": false
+      },
+      "message": "",
+      "status": true
+    },
+    "dmessage": ""
+  }
+}

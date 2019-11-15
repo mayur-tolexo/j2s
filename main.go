@@ -3,11 +3,12 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
+	"flag"
 	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"reflect"
 	"strings"
 	"text/template"
@@ -30,44 +31,65 @@ func init() {
 
 //Parser model
 type Parser struct {
-	Name   string
-	Fields map[string]interface{}
+	Name    string
+	Fields  map[string]interface{}
+	strMap  map[string]string
+	hashMap map[string]string
+}
+
+//getJSONData will return json data
+func getJSONData(file string) (data map[string]interface{}, err error) {
+	var (
+		jsonFile  *os.File
+		byteValue []byte
+	)
+	if jsonFile, err = os.Open(file); err == nil {
+		defer jsonFile.Close()
+		if byteValue, err = ioutil.ReadAll(jsonFile); err == nil {
+			err = json.Unmarshal(byteValue, &data)
+		}
+	}
+	return
 }
 
 func main() {
 
-	var (
-		data Parser
-		body map[string]interface{}
-	)
+	var data Parser
 
-	jsonFile, err := os.Open("input3.json")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer jsonFile.Close()
-	byteValue, _ := ioutil.ReadAll(jsonFile)
+	ip := flag.String("ip", "input.json", "Input File")
+	op := flag.String("op", "output.go", "Output File")
+	name := flag.String("name", "User", "Structure Name")
+	flag.Parse()
 
-	json.Unmarshal(byteValue, &body)
-	data.Name = "User"
+	curPkg := getCurPkg()
+	body, err := getJSONData(*ip)
+	ifError(err)
+	data.Name = *name
 	data.Fields = body
-	file := "output.go"
-
 	createStruct(data)
-	fp, err := os.Create(file)
+	fp, err := os.Create(*op)
 	if err == nil {
-		fp.WriteString("package jsonToStruct\n")
+		fp.WriteString("package " + curPkg + "\n")
 		for i := len(strOrder) - 1; i >= 0; i-- {
 			fp.WriteString(strMap[strOrder[i]] + "\n")
 		}
 	}
-	err = exec.Command("gofmt", "-w", file).Run()
+	err = exec.Command("gofmt", "-w", *op).Run()
 	ifError(err)
 }
 
+//getCurPkg will return current pkg name
+func getCurPkg() (curPkg string) {
+	dir, err := os.Getwd()
+	ifError(err)
+	curPkg = filepath.Base(dir)
+	return
+}
+
+//ifError will print error if not nil
 func ifError(err error) {
 	if err != nil {
-		fmt.Println(err)
+		log.Fatal(err)
 	}
 }
 
