@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"flag"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -38,16 +39,28 @@ type Parser struct {
 }
 
 //getJSONData will return json data
-func getJSONData(file string) (data map[string]interface{}, err error) {
+func getJSONData(file string, raw int) (data map[string]interface{}, err error) {
+
 	var (
-		jsonFile  *os.File
 		byteValue []byte
+		jsonValue string
 	)
+	if raw == 1 {
+		fmt.Println("Enter the json between tilt (~): ")
+		fmt.Scanf("%q", &jsonValue)
+		err = json.Unmarshal([]byte(jsonValue), &data)
+	} else if byteValue, err = readJSONFile(file); err == nil {
+		err = json.Unmarshal(byteValue, &data)
+	}
+	return
+}
+
+//readJSONFile will read json file
+func readJSONFile(file string) (byteValue []byte, err error) {
+	var jsonFile *os.File
 	if jsonFile, err = os.Open(file); err == nil {
 		defer jsonFile.Close()
-		if byteValue, err = ioutil.ReadAll(jsonFile); err == nil {
-			err = json.Unmarshal(byteValue, &data)
-		}
+		byteValue, err = ioutil.ReadAll(jsonFile)
 	}
 	return
 }
@@ -59,10 +72,11 @@ func main() {
 	ip := flag.String("ip", "input.json", "Input File")
 	op := flag.String("op", "output.go", "Output File")
 	name := flag.String("name", "User", "Structure Name")
+	raw := flag.Int("raw", 0, "1 to enable console json input")
 	flag.Parse()
 
 	curPkg := getCurPkg()
-	body, err := getJSONData(*ip)
+	body, err := getJSONData(*ip, *raw)
 	ifError(err)
 	data.Name = *name
 	data.Fields = body
