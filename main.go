@@ -21,13 +21,14 @@ var (
 	strMap   map[string]string
 	hashMap  map[string]string
 	strOrder []string
+	tmplStr  string
 )
 
 func init() {
 	strMap = make(map[string]string)
 	hashMap = make(map[string]string)
 	strOrder = make([]string, 0)
-
+	initTmpl()
 }
 
 //Parser model
@@ -116,11 +117,12 @@ func createStruct(data Parser) {
 	return
 }
 
+//getStructStr will execute template and return string and struct hash
 func getStructStr(data Parser) (string, string) {
 
 	hash := ""
 	hFn := getHashFn(&hash)
-	tmpl, _ := template.New("template").Funcs(template.FuncMap{
+	tmpl, err := template.New("template").Funcs(template.FuncMap{
 		"Title": getFieldName,
 		"TypeOf": func(p string, k string, v interface{}) string {
 			if v == nil {
@@ -144,10 +146,12 @@ func getStructStr(data Parser) (string, string) {
 			return getType(v, rType)
 		},
 		"Hash": hFn,
-	}).ParseFiles("template.tpl")
-
+	}).Parse(tmplStr)
+	ifError(err)
 	var buf bytes.Buffer
-	tmpl.ExecuteTemplate(&buf, "template.tpl", data)
+	err = tmpl.Execute(&buf, data)
+	ifError(err)
+	// tmpl.ExecuteTemplate(&buf, "template.tpl", data)
 	return buf.String(), hash
 }
 
@@ -223,4 +227,19 @@ func getFieldName(k string) (f string) {
 	)
 	f = r.Replace(f)
 	return
+}
+
+func initTmpl() {
+	tmplStr = `
+{{$structName:= Title .Name}}
+//{{$structName}} model
+type {{$structName}} struct {
+{{- range $jsonName, $val := .Fields}}
+	{{ $cField := Title $jsonName -}}
+	{{ $cType := (TypeOf $structName $jsonName $val) -}}
+	{{ $cField }} {{ $cType }} ` + "`json:\"{{ $jsonName }}\"`" + `
+	{{- $cHash := print "field_" $cField "_type_" $cType "_json_" $jsonName }}
+	{{- Hash $structName $cHash}}
+{{- end}}
+}`
 }
