@@ -91,6 +91,7 @@ func main() {
 	}
 	err = exec.Command("gofmt", "-w", *op).Run()
 	ifError(err)
+	fmt.Println(*op, "Created")
 }
 
 //getCurPkg will return current pkg name

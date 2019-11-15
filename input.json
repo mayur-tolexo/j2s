@@ -1,15 +1,10 @@
 {
+  "name": "Mayur",
   "age": 23,
-  "social": {
-    "facebook": "https://facebook.com",
-    "twitter": "https://twitter.com"
-  },
-  "test1": {
-    "social": {
-      "test2": {
-        "facebook": "https://facebook.com",
-        "twitter": "https://twitter.com"
-      }
+  "social": [
+    {
+      "facebook": "https://facebook.com",
+      "twitter": "https://twitter.com"
     }
-  }
+  ]
 }
