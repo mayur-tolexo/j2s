@@ -17,7 +17,7 @@ go get github.com/mayur-tolexo/j2s
 
 
 
-##### Output struct
+
 
 
 #### Create struct from json input file.
