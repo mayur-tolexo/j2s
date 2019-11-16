@@ -37,16 +37,17 @@ type Parser struct {
 	Fields  map[string]interface{}
 	strMap  map[string]string
 	hashMap map[string]string
+	Reuse   int
 }
 
 //getJSONData will return json data
-func getJSONData(file string, raw int) (data map[string]interface{}, err error) {
+func getJSONData(file string) (data map[string]interface{}, err error) {
 
 	var (
 		byteValue []byte
 		jsonValue string
 	)
-	if raw == 1 {
+	if file == "" {
 		fmt.Println("Enter the json between tilt (~): ")
 		fmt.Scanf("%q", &jsonValue)
 		err = json.Unmarshal([]byte(jsonValue), &data)
@@ -70,18 +71,19 @@ func main() {
 
 	var data Parser
 
-	ip := flag.String("ip", "input.json", "Input File")
+	ip := flag.String("ip", "", "Input File")
 	op := flag.String("op", "output.go", "Output File")
 	name := flag.String("name", "User", "Structure Name")
-	raw := flag.Int("raw", 0, "1 to enable console json input")
+	reuse := flag.Int("reuse", 0, "1 if you want to reuse struct having same fields")
 	flag.Parse()
 
 	curPkg := getCurPkg()
-	body, err := getJSONData(*ip, *raw)
+	body, err := getJSONData(*ip)
 	ifError(err)
 	data.Name = *name
 	data.Fields = body
-	createStruct(data)
+	data.Reuse = *reuse
+	data.createStruct(data)
 	fp, err := os.Create(*op)
 	if err == nil {
 		fp.WriteString("package " + curPkg + "\n")
@@ -91,7 +93,8 @@ func main() {
 	}
 	err = exec.Command("gofmt", "-w", *op).Run()
 	ifError(err)
-	fmt.Println(*op, "Created")
+	fmt.Println("--------------------")
+	fmt.Println(*op, "file created")
 }
 
 //getCurPkg will return current pkg name
@@ -109,44 +112,27 @@ func ifError(err error) {
 	}
 }
 
-func createStruct(data Parser) {
+//createStruct will set struct in struct map
+func (d Parser) createStruct(data Parser) {
 	var hash string
 	fName := getFieldName(data.Name)
-	strMap[fName], hash = getStructStr(data)
-	hashMap[hash] = fName
+	strMap[fName], hash = d.getStructStr(data)
+	if d.Reuse == 1 {
+		hashMap[hash] = fName
+	}
 	strOrder = append(strOrder, data.Name)
 	return
 }
 
 //getStructStr will execute template and return string and struct hash
-func getStructStr(data Parser) (string, string) {
+func (d Parser) getStructStr(data Parser) (string, string) {
 
 	hash := ""
 	hFn := getHashFn(&hash)
 	tmpl, err := template.New("template").Funcs(template.FuncMap{
-		"Title": getFieldName,
-		"TypeOf": func(p string, k string, v interface{}) string {
-			if v == nil {
-				return "string"
-			}
-
-			rType := reflect.TypeOf(v)
-			if isStruct(rType) {
-				return getSubStructType(p, k, v)
-			} else if rType.Kind() == reflect.Slice {
-
-				rVal := reflect.ValueOf(v)
-				if rVal.Len() > 0 {
-					fVal := rVal.Index(0)
-					if isStruct(fVal.Elem().Type()) {
-						return "[]" + getSubStructType(p, k, fVal.Interface())
-					}
-					return "[]" + getType(v, fVal.Elem().Type())
-				}
-			}
-			return getType(v, rType)
-		},
-		"Hash": hFn,
+		"Title":  getFieldName,
+		"TypeOf": d.getTypeOf,
+		"Hash":   hFn,
 	}).Parse(tmplStr)
 	ifError(err)
 	var buf bytes.Buffer
@@ -156,8 +142,31 @@ func getStructStr(data Parser) (string, string) {
 	return buf.String(), hash
 }
 
-func getHashFn(gHash *string) func(string, string) string {
-	return func(name string, hash string) string {
+//getTypeOf will return type of the field
+func (d Parser) getTypeOf(p string, k string, v interface{}) string {
+	if v == nil {
+		return "string"
+	}
+
+	rType := reflect.TypeOf(v)
+	if isStruct(rType) {
+		return d.getSubStructType(p, k, v)
+	} else if rType.Kind() == reflect.Slice {
+
+		rVal := reflect.ValueOf(v)
+		if rVal.Len() > 0 {
+			fVal := rVal.Index(0)
+			if isStruct(fVal.Elem().Type()) {
+				return "[]" + d.getSubStructType(p, k, fVal.Interface())
+			}
+			return "[]" + getType(v, fVal.Elem().Type())
+		}
+	}
+	return getType(v, rType)
+}
+
+func getHashFn(gHash *string) func(string) string {
+	return func(hash string) string {
 		*gHash += hash
 		return ""
 	}
@@ -186,11 +195,11 @@ func isStruct(rType reflect.Type) (isStruct bool) {
 }
 
 //getSubStructType will return map field name after creating struct
-func getSubStructType(p string, k string, v interface{}) string {
+func (d Parser) getSubStructType(p string, k string, v interface{}) string {
 
 	name := getFieldName(k)
 	subData := getParserModel(name, v)
-	newStr, hash := getStructStr(subData)
+	newStr, hash := d.getStructStr(subData)
 
 	//if any struct already exists with same hash
 	if name, exists := hashMap[hash]; exists {
@@ -206,7 +215,7 @@ func getSubStructType(p string, k string, v interface{}) string {
 	}
 
 	subData = getParserModel(name, v)
-	createStruct(subData)
+	d.createStruct(subData)
 	return name
 }
 
@@ -240,7 +249,7 @@ type {{$structName}} struct {
 	{{ $cType := (TypeOf $structName $jsonName $val) -}}
 	{{ $cField }} {{ $cType }} ` + "`json:\"{{ $jsonName }}\"`" + `
 	{{- $cHash := print "field_" $cField "_type_" $cType "_json_" $jsonName }}
-	{{- Hash $structName $cHash}}
+	{{- Hash $cHash}}
 {{- end}}
 }`
 }
