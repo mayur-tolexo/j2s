@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/mayur-tolexo/j2s.svg?branch=master)](https://travis-ci.org/mayur-tolexo/j2s)
 [![Godocs](https://img.shields.io/badge/golang-documentation-blue.svg)](https://www.godoc.org/github.com/mayur-tolexo/j2s)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mayur-tolexo/j2s)](https://goreportcard.com/report/github.com/mayur-tolexo/j2s)
 [![Open Source Helpers](https://www.codetriage.com/mayur-tolexo/sworker/badges/users.svg)](https://www.codetriage.com/mayur-tolexo/j2s)
