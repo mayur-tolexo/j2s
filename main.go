@@ -128,11 +128,10 @@ func (d Parser) createStruct(data Parser) {
 func (d Parser) getStructStr(data Parser) (string, string) {
 
 	hash := ""
-	hFn := getHashFn(&hash)
 	tmpl, err := template.New("template").Funcs(template.FuncMap{
 		"Title":  getFieldName,
 		"TypeOf": d.getTypeOf,
-		"Hash":   hFn,
+		"Hash":   getHashFn(&hash),
 	}).Parse(tmplStr)
 	ifError(err)
 	var buf bytes.Buffer

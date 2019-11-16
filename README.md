@@ -8,7 +8,7 @@ go get github.com/mayur-tolexo/j2s
   - -ip=input.json [Input File (default "input.json")]
   - -op=bakery.go [Output File (default "output.go")]
   - -name=Bakery [Structure Name (default "User")]
-  - -raw=0 [1 to enable console json input]
+  - -reuse=1 [if you want to reuse struct having same fields (default 0)]
 
 #### Create Struct from console json.
 | Command        | Output           |
