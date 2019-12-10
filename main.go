@@ -74,7 +74,7 @@ func main() {
 	ip := flag.String("ip", "", "Input File")
 	op := flag.String("op", "output.go", "Output File")
 	name := flag.String("name", "User", "Structure Name")
-	reuse := flag.Int("reuse", 0, "1 if you want to reuse struct having same fields")
+	reuse := flag.Int("reuse", 1, "0 if you don't want to reuse struct having same fields")
 	flag.Parse()
 
 	curPkg := getCurPkg()
