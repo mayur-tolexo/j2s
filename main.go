@@ -158,7 +158,7 @@ func (d Parser) getTypeOf(p string, k string, v interface{}) string {
 			if isStruct(fVal.Elem().Type()) {
 				return "[]" + d.getSubStructType(p, k, fVal.Interface())
 			}
-			return "[]" + getType(v, fVal.Elem().Type())
+			return "[]" + getType(fVal.Elem().Interface(), fVal.Elem().Type())
 		}
 	}
 	return getType(v, rType)
