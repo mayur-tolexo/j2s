@@ -228,13 +228,15 @@ func getParserModel(name string, v interface{}) Parser {
 //getFieldName will return field name in Camel Case
 func getFieldName(k string) (f string) {
 	f = strcase.ToCamel(k)
-	r := strings.NewReplacer(
-		"Id", "ID",
-		"id", "ID",
-		"Api", "API",
-		"Http", "HTTP",
-	)
-	f = r.Replace(f)
+	/*
+		r := strings.NewReplacer(
+			"Id", "ID",
+			"id", "ID",
+			"Api", "API",
+			"Http", "HTTP",
+		)
+		f = r.Replace(f)
+	*/
 	return
 }
 
